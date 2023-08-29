@@ -38,6 +38,7 @@ jobs:
         release_name: Release ${{ github.ref }}
         draft: false
         prerelease: false
+        token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload Release Asset
       id: upload-release-asset 
