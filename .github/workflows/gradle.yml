@@ -40,6 +40,9 @@ jobs:
       with:
         arguments: build -Pversion=${{ env.VERSION }}
 
+    - name: List build output
+      run: ls -l ./build/libs/
+
     - name: Upload JAR
       uses: actions/upload-artifact@v2
       with:
