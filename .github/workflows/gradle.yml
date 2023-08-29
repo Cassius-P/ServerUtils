@@ -40,6 +40,13 @@ jobs:
       with:
         arguments: build -Pversion=${{ env.VERSION }}
 
+    - name: Upload JAR
+      uses: actions/upload-artifact@v2
+      with:
+        name: serverutils-jar
+        path: ./build/libs/serverutils-${{ env.VERSION }}.jar
+
+
   prepare_release:
     needs: build
     runs-on: ubuntu-latest
@@ -65,6 +72,12 @@ jobs:
       VERSION: ${{ needs.build.outputs.version }}  # Set VERSION from build job output
     if: startsWith(github.ref, 'refs/tags/')
     steps:
+    - name: Download JAR
+      uses: actions/download-artifact@v2
+      with:
+        name: serverutils-jar
+        path: ./build/libs/
+
     - uses: actions/checkout@v3
 
     - name: Upload Release Asset
