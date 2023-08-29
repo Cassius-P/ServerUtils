@@ -45,9 +45,6 @@ public class AdvancementDTO {
             }
         }
 
-
-
-
         this.parent = advancement.getParent() != null ? advancement.getParent().getId().toString() : null;
         this.modId = advancement.getId().getNamespace();
     }
