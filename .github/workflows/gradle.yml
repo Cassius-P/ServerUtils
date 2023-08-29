@@ -3,15 +3,13 @@ name: Build and Release Forge Mod
 on:
   push:
     branches: [ "main" ]
+    tags:
+      - 'v*'
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  contents: read
-
 jobs:
   build:
-    permissions: write-all
     runs-on: ubuntu-latest
 
     steps:
