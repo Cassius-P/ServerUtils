@@ -75,13 +75,15 @@ jobs:
       VERSION: ${{ needs.build.outputs.version }}  # Set VERSION from build job output
     if: startsWith(github.ref, 'refs/tags/')
     steps:
-    - name: Show current working directory and list files
-      run: pwd && ls -la && ls -la ./build/libs/
+
     - name: Download JAR
       uses: actions/download-artifact@v2
       with:
         name: serverutils-jar
         path: ./build/libs/
+
+    - name: Show current working directory and list files
+      run: pwd && ls -la && ls -la ./build/libs/
 
     - uses: actions/checkout@v3
 
